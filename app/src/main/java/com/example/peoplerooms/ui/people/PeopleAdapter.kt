@@ -39,14 +39,13 @@ class PeopleAdapter(val list: People, val onClickAction: (PeopleItemModel) -> Un
         @SuppressLint("SetTextI18n")
         fun initUI(model: PeopleItemModel) {
             binding.apply {
-                tvIdProduct.text = model.id
-                tvDescriptionProduct.text = model.firstName + " " + model.lastName
+                tvName.text = model.firstName + " " + model.lastName
                 tvContact.text = model.email
                 //load image from URL - GLIDE
                 Glide.with(view.context) //reference of parent
                     .load(model.avatar) //the resource that needs to be loaded
                     //what if URL fails?
-                    .placeholder(R.drawable.ic_launcher_background)
+                    .placeholder(R.drawable.img_1)
                     .into(view.findViewById<ImageView>(R.id.ivImage)) //imageView that will display image
             }
         }

@@ -3,6 +3,10 @@ package com.example.peoplerooms.ui.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.peoplerooms.R
 import com.example.peoplerooms.databinding.ActivityMainBinding
 import com.example.peoplerooms.ui.people.PeopleFragment
@@ -17,20 +21,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
+        // Set up BottomNavigationView with NavController
+        binding.bottomNav.setupWithNavController(navController)
 
-        replaceFragment(PeopleFragment())
-
-        binding.bottomNav.setOnItemSelectedListener {
-            when(it.itemId) {
-               R.id.people_menu -> replaceFragment(PeopleFragment())
-                R.id.room_menu -> replaceFragment(RoomFragment())
-            }
-            true
-        }
+        // Set Toolbar
+        setSupportActionBar(binding.topAppBar)
     }
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(binding.frameLayout.id, fragment).commit()
-    }
+
 }

@@ -8,14 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.peoplerooms.R
-import com.example.peoplerooms.data.model.people.People
 import com.example.peoplerooms.data.model.rooms.Rooms
-import com.example.peoplerooms.databinding.FragmentPeopleBinding
 import com.example.peoplerooms.databinding.FragmentRoomBinding
-import com.example.peoplerooms.ui.people.ApiResponse
-import com.example.peoplerooms.ui.people.PeopleAdapter
-import com.example.peoplerooms.ui.people.PeopleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,6 +20,8 @@ class RoomFragment : Fragment() {
 
     private lateinit var viewModel: RoomViewModel
     private lateinit var adapter: RoomAdapter
+
+    private var isSortByOccupied = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +34,11 @@ class RoomFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.fabRoom.setOnClickListener {
+            sortRooms(isSortByOccupied)
+            isSortByOccupied = !isSortByOccupied
+        }
 
         viewModel = ViewModelProvider(this)[RoomViewModel::class.java]
 
@@ -73,12 +74,23 @@ class RoomFragment : Fragment() {
 
     }
 
-    private fun setupUI(models : Rooms) {
-        adapter = RoomAdapter(models) { item ->
+    private fun setupUI(models: Rooms) {
+        adapter = RoomAdapter(models.toMutableList()) { item ->
             Toast.makeText(context, "${item.maxOccupancy} Clicked!", Toast.LENGTH_SHORT).show()
         }
         binding.recyclerViewRoom.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewRoom.adapter = adapter
+    }
+
+    private fun sortRooms(occupiedFirst: Boolean) {
+        val sortedList = if (occupiedFirst) {
+            adapter.list.sortedByDescending { it.isOccupied == true }
+        } else {
+            adapter.list.sortedBy { it.isOccupied == true }
+        }
+
+        adapter.list = sortedList.toMutableList()
+        adapter.notifyDataSetChanged()
     }
 
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.peoplerooms.R
@@ -16,7 +17,7 @@ import com.example.peoplerooms.databinding.RoomListItemBinding
 import com.example.peoplerooms.ui.people.PeopleAdapter
 
 class RoomAdapter(
-    val list: Rooms,
+    var list: MutableList<RoomsItemModel>,
     val onClickAction: (RoomsItemModel) -> Unit
 ) : RecyclerView.Adapter<RoomAdapter.MyViewHolder>() {
 
@@ -29,12 +30,22 @@ class RoomAdapter(
     }
 
     override fun onBindViewHolder(holder: RoomAdapter.MyViewHolder, position: Int) {
-        holder.initUI(list[position])
+        val room = list[position]
+        holder.initUI(room)
         holder.binding.tvId.setOnClickListener {
             onClickAction.invoke(
-                list[position] ?: RoomsItemModel()
+                list[position]
             )
         }
+        val context = holder.itemView.context
+        val color = if (room.isOccupied == true) {
+            // occupied
+            ContextCompat.getColor(context, R.color.occupied_color)
+        } else {
+            // available
+            ContextCompat.getColor(context, R.color.available_color)
+        }
+        holder.binding.cardViewRoom.setCardBackgroundColor(color)
     }
 
     override fun getItemCount(): Int {
@@ -46,9 +57,8 @@ class RoomAdapter(
         @SuppressLint("SetTextI18n")
         fun initUI(model: RoomsItemModel) {
             binding.apply {
-                tvId.text = model.id
-                tvIsOccupied.text = model.isOccupied.toString()
-                tvMaxOccupancy.text = model.maxOccupancy.toString()
+                tvId.text = "Room No : "+ model.id
+                tvMaxOccupancy.text = "Max Space : " +  model.maxOccupancy.toString()
             }
         }
     }

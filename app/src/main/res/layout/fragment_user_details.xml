@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/productScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/outline_arrow_back_24"
+            android:background="@android:color/transparent"
+            android:contentDescription="Back"
+            android:layout_gravity="start"
+            android:padding="4dp"
+            android:layout_marginBottom="12dp" />
+
+        <ImageView
+            android:id="@+id/iv_UserImage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Product Image" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingTop="16dp"
+            android:text="Title" />
+
+        <TextView
+            android:id="@+id/tvUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:paddingTop="4dp"
+            android:text="Category" />
+
+        <TextView
+            android:id="@+id/tvUserJobTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#E91E63"
+            android:paddingTop="8dp"
+            android:text="Price" />
+
+        <TextView
+            android:id="@+id/tvUserColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingTop="12dp"
+            android:text="Description" />
+
+        <TextView
+            android:id="@+id/tvuserSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#888888"
+            android:paddingTop="12dp"
+            android:text="Created At" />
+
+    </LinearLayout>
+</ScrollView>

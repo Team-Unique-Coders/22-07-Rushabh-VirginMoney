@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.peoplerooms.data.model.people.People
 import com.example.peoplerooms.databinding.FragmentPeopleBinding
@@ -71,8 +73,12 @@ class PeopleFragment : Fragment() {
     private fun setupUI(models : People) {
         adapter = PeopleAdapter(models) { item ->
             Toast.makeText(context, "${item.firstName + " " + item.lastName} Clicked!", Toast.LENGTH_SHORT).show()
+            val action = PeopleFragmentDirections
+                .actionPeopleFragmentToUserDetailsFragment(item)
+            println("Action is : ${action}")
+            findNavController().navigate(action)
         }
-        binding.recyclerViewPeople.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewPeople.layoutManager = GridLayoutManager(requireContext(),2)
         binding.recyclerViewPeople.adapter = adapter
     }
 
