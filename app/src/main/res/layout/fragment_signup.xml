@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F9FC"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Welcome Message -->
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:text="Glad to see you. Please SignUp"
+            android:textColor="#222222"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="328dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_field_bg"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textColorHint="#888" />
+
+        <!-- Password -->
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/input_field_bg"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textColorHint="#888" />
+        <EditText
+            android:id="@+id/passwordInputConfirm"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="44dp"
+            android:background="@drawable/input_field_bg"
+            android:hint="Confirm your password"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textColor="#000"
+            android:textColorHint="#888" />
+
+        <!-- Forgot Password -->
+
+        <!-- Login Button -->
+
+
+
+        <Button
+            android:id="@+id/signupBtn"
+            android:layout_width="338dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/primary"
+            android:text="Sign Up"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <!-- Register Text -->
+        <TextView
+            android:id="@+id/loginNow"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_marginTop="24dp"
+            android:text="Have an account? Login"
+            android:textColor="#00AA66"
+            android:textSize="14sp" />
+    </LinearLayout>
+</ScrollView>

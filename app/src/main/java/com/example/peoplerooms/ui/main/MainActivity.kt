@@ -2,6 +2,8 @@ package com.example.peoplerooms.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
@@ -30,6 +32,37 @@ class MainActivity : AppCompatActivity() {
 
         // Set Toolbar
         setSupportActionBar(binding.topAppBar)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val topLevelDestinations = setOf(
+                R.id.loginFragment,
+                R.id.signupFragment,
+                R.id.peopleFragment,
+                R.id.roomFragment
+            )
+            val isTopLevel = destination.id in topLevelDestinations
+            supportActionBar?.setDisplayHomeAsUpEnabled(!isTopLevel)
+            supportActionBar?.title = "PeopleRooms"
+
+            val hideBottomNavFragments = setOf(
+                R.id.loginFragment,
+                R.id.signupFragment,
+                R.id.userDetailsFragment
+            )
+            val showBottomNav = destination.id !in hideBottomNavFragments
+            binding.bottomNav.isVisible = showBottomNav
+        }
+
+
+        // Handle toolbar navigation click
+        binding.topAppBar.setNavigationOnClickListener {
+            navController.navigateUp()
+        }
+
+
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
 }

@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.peoplerooms.data.model.rooms.Rooms
 import com.example.peoplerooms.databinding.FragmentRoomBinding
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +25,7 @@ class RoomFragment : Fragment() {
 
     private lateinit var viewModel: RoomViewModel
     private lateinit var adapter: RoomAdapter
-
+    private lateinit var analytics: FirebaseAnalytics
     private var isSortByOccupied = true
 
     override fun onCreateView(
@@ -29,6 +34,7 @@ class RoomFragment : Fragment() {
     ): View? {
         super.onCreate(savedInstanceState)
         _binding = FragmentRoomBinding.inflate(inflater,container,false)
+        analytics = Firebase.analytics
         return binding.root
     }
 
@@ -38,6 +44,18 @@ class RoomFragment : Fragment() {
         binding.fabRoom.setOnClickListener {
             sortRooms(isSortByOccupied)
             isSortByOccupied = !isSortByOccupied
+
+                analytics.logEvent(
+                    FirebaseAnalytics.Event.SELECT_CONTENT,
+                    bundleOf(
+                        FirebaseAnalytics.Param.ITEM_ID to "Product",
+                        FirebaseAnalytics.Param.ITEM_NAME to "Protien",
+                        FirebaseAnalytics.Param.CONTENT_TYPE to "text",
+
+//                    Pair("","")
+                    ))
+//                throw NullPointerException("You crashed!")
+
         }
 
         viewModel = ViewModelProvider(this)[RoomViewModel::class.java]

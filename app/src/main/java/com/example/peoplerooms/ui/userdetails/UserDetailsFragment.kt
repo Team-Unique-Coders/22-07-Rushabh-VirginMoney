@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.peoplerooms.R
@@ -44,9 +45,6 @@ class UserDetailsFragment : Fragment() {
             .placeholder(R.drawable.img_1)
             .into(binding.ivUserImage)
 
-        binding.btnBack.setOnClickListener {
-            requireActivity().onBackPressedDispatcher.onBackPressed()
-        }
 
         binding.tvUserName.text = people.firstName + " " + people.lastName
         binding.tvUserEmail.text = "$ ${people.email}"

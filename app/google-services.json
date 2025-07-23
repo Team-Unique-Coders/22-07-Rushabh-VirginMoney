@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "677446851671",
+    "project_id": "peoplerooms-9f8b3",
+    "storage_bucket": "peoplerooms-9f8b3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677446851671:android:74a5f1051084eef2d29712",
+        "android_client_info": {
+          "package_name": "com.example.peoplerooms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIf57vAdgfEOdbV5OfAKa_LqCNa-i2EXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
