@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.peoplerooms"
+    namespace = "com.project.peoplerooms"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.peoplerooms"
+        applicationId = "com.project.peoplerooms"
         minSdk = 25
         targetSdk = 36
         versionCode = 1
@@ -55,6 +55,9 @@ dependencies {
 
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -75,6 +78,8 @@ dependencies {
     implementation(libs.google.firebase.auth)
     implementation(libs.google.firebase.analytics)
     implementation(libs.google.firebase.crashlytics)
+
+    implementation("com.facebook.android:facebook-android-sdk:16.3.0")
 
 
 }

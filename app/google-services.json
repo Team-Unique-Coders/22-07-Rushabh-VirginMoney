@@ -7,12 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:677446851671:android:74a5f1051084eef2d29712",
+        "mobilesdk_app_id": "1:677446851671:android:0362e7a6617f7120d29712",
         "android_client_info": {
-          "package_name": "com.example.peoplerooms"
+          "package_name": "com.project.peoplerooms"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "677446851671-oa9o1q1gqm4jdj855f7dqq2ims1lvumu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project.peoplerooms",
+            "certificate_hash": "535927e46cb446cfcead7f7debcd90e472cd909d"
+          }
+        },
+        {
+          "client_id": "677446851671-9k5mq03apbha5qefi353goi5l3f6gvrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCIf57vAdgfEOdbV5OfAKa_LqCNa-i2EXw"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677446851671-9k5mq03apbha5qefi353goi5l3f6gvrg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
