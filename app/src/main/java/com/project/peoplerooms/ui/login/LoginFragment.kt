@@ -105,6 +105,7 @@ class LoginFragment : Fragment() {
                 .addOnSuccessListener { authResult ->
                     val user = authResult.user
                     Toast.makeText(context, "Welcome ${user?.displayName} from GitHub", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_peopleFragment)
                 }
                 .addOnFailureListener {
                     Toast.makeText(context, "GitHub Sign-in Failed: ${it.message}", Toast.LENGTH_SHORT).show()
@@ -115,11 +116,18 @@ class LoginFragment : Fragment() {
                 .addOnSuccessListener { authResult ->
                     val user = authResult.user
                     Toast.makeText(context, "Welcome ${user?.displayName} from GitHub", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_peopleFragment)
                 }
                 .addOnFailureListener {
                     Toast.makeText(context, "GitHub Sign-in Failed: ${it.message}", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    private fun signOut() {
+        // [START auth_sign_out]
+        Firebase.auth.signOut()
+        // [END auth_sign_out]
     }
 
 
@@ -180,6 +188,7 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     Toast.makeText(context,"Hello ${user?.displayName} from Facebook", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_peopleFragment)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -246,6 +255,7 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
                     Toast.makeText(context,"Hello ${user?.email}", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_peopleFragment)
 //                    updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user
